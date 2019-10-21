@@ -1,40 +1,80 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>civilengineer.io</title>
-    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans&display=swap" rel="stylesheet">
+  <title>civilengineer.io</title>
+  <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
 </head>
+
 <body>
   <div id="app"></div>
   <script type="text/babel">
     class App extends React.Component {
      constructor(props) {
          super(props)
-         this.state = {render:''}
+         this.state = {render:'', menu:'open',width:0,height:0}
+         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
          }
     componentDidMount() {
       this.setState({render:'home'})
+      window.addEventListener('resize', this.updateWindowDimensions);
+      this.updateWindowDimensions();
     } 
-    home() {
-      return(<div>Hello World</div>)
+   componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+   
+  }
+showopenlarge() {
+  return(<div className="main-container">
+        <div className="large-container-1 showborder"> &nbsp;</div>
+        <div className="large-container-2 showborder">&nbsp;</div>
+    
+    </div>)
+}
+  showcontent() {
+    if (this.state.menu === "open") {
+        
+      if(this.state.width>1080) {
+          return(<div>menu opem large</div>)
+        } else if (this.state.width>720) {
+          return(<div>menu  open medium</div>)
+        } else {
+          return(<div>menu open small</div>)
+        }
+     
+
+    } else if (this.state.menu === "closed") {
+
+        
+      if(this.state.width>1080) {
+          return(<div>menu large</div>)
+        } else if (this.state.width>720) {
+          return(<div>menu medium</div>)
+        } else {
+          return(<div>menu small</div>)
+        }
+
     }
-    showcontent() {
-      switch(this.state.render) {
-        case "home":
-        return(this.home())
-        default:
-        break;
-      }
-    }
+
+}
+ 
       render() {
-        return (<div> {this.showcontent()}
-                </div>);
+        console.log(this.state.width,this.state.height)
+      return(this.showcontent())                 
       }
     }
+
     ReactDOM.render(<App />, document.getElementById("app"));
   </script>
 </body>
+
 </html>
