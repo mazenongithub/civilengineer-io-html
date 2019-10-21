@@ -61,7 +61,59 @@ class App extends React.Component {
 
         )
     }
+    openmenusmall() {
+      const myapps = this.myapps();
+        let appmenu = [];
+        let appdisplay = [];
+        myapps.map(myapp => {
+            appmenu.push(<div className="general-app-container navigation-subcontainer showborder general-font regularHeight alignCenter"> {myapp.url} </div>)
+            appdisplay.push(this.createapp(myapp))
+        })
+    return(
+        <div className="general-flex">
+            <div className="flex-one general-font">
 
+                <div className="general-flex">
+                    <div className="flex-one titleSize content-background alignCenter bold-font">
+                        Welcome to civilengineer.io
+                    </div>
+                </div>
+
+        <div className="general-flex navigation-container showborder">
+            <div className="flex-one">
+
+                <div className="general-flex">
+                    <div className="flex-five showborder titleSize bold-font alignCenter">
+                      Apps
+                    </div>
+                    <div className="flex-two showborder alignCenter">
+                      <button className="closeMenuIcon general-button">{this.closeMenuIcon()}</button> 
+                    </div>
+                
+                </div>
+
+                {appmenu}
+            
+            
+            
+            </div>
+        </div>
+
+        <div className="general-app-container regularHeight">
+          Delivering Free Open Source Applications to the internet, IOS, and Google Play Markets
+        </div>
+
+        {appdisplay}
+
+
+            
+            </div>
+
+        </div>
+ 
+    )
+  
+  }
     openmenularge() {
         const myapps = this.myapps();
         let appmenu = [];
@@ -75,28 +127,21 @@ class App extends React.Component {
             <div className="general-container">
                 <div className="large-container-1 showborder navigation-container">
                     <div className="general-flex">
-
                         <div className="flex-four showborder alignCenter general-font titleSize bold-font">Apps </div>
                         <div className="flex-one showborder alignRight"><button className="closeMenuIcon general-button">{this.closeMenuIcon()}</button> </div>
-
                     </div>
                     {appmenu}
-
-
                 </div>
 
 
                 <div className="large-container-2 showborder general-font">
                     <div className="content-container showborder alignCenter titleSize content-background bold-font">
                         Welcome to civilengineer.io
-                </div>
+                    </div>
                     <div className="general-app-container content-container regularHeight bold-font">
                         Delivering Free Open Source Applications to the internet, IOS, and Google Play Markets
-       
-                 </div>
+                    </div>
                     {appdisplay}
-
-
                 </div>
             </div>
 
@@ -108,7 +153,7 @@ class App extends React.Component {
             if (this.state.width > 720) {
                 return (this.openmenularge())
             } else {
-                return (<div>menu open small</div>)
+                return (this.openmenusmall())
             }
 
 

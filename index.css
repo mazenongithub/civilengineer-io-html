@@ -38,6 +38,12 @@ margin-top:15px;
 .flex-one{
     flex:1
 }
+.flex-two{
+    flex:2
+}
+.flex-five{
+    flex:5
+}
 .showborder{
     border:1px solid;
 }
@@ -64,6 +70,26 @@ text-align: center;
 .navigation-container{
     background-color: #BF9B9B;
 }
+ .content-background{
+    min-height:60px;
+}
+.titleSize{
+    font-size:24px;
+}
+.closeMenuIcon{
+    width:62px;
+    height:54px;
+    background-color: #BF9B9B;
+    }
+    .navigation-container{
+        height:337px;
+    }
+
+    .app-image-container{
+        width:278px;
+        height:278px;
+    }
+
 @media screen and (min-width:721px) {
     .large-container-1,
     .large-container-2{
@@ -83,15 +109,13 @@ text-align: center;
     .navigation-container{
         height:1560px;
     }
-    .closeMenuIcon{
-        width:62px;
-        height:54px;
-        background-color: #BF9B9B;
-        }
 
         .app-image-container{
             width:361px;
             height:361px;
+        }
+        .content-background{
+            height:70px;
         }
 }
 
