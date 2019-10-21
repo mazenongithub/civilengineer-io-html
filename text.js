@@ -2,8 +2,10 @@
 function openmenularge() {
     const myapps = this.myapps();
     let appmenu = [];
+    let appdisplay = [];
     myapps.map(myapp => {
-        appmenu.push(<div className="navigation-subcontainer showborder general-font regularHeight alignCenter"> {myapp.url} </div>)
+        appmenu.push(<div className="general-app-container navigation-subcontainer showborder general-font regularHeight alignCenter"> {myapp.url} </div>)
+        appdisplay.push(this.createapp(myapp))
     })
 
     return (
@@ -21,11 +23,15 @@ function openmenularge() {
             </div>
 
 
-            <div className="large-container-2 showborder">&nbsp;
-                  <div className="content-container titleSize general-font content-background bold-font">
+            <div className="large-container-2 showborder general-font">
+                <div className="content-container showborder alignCenter titleSize content-background bold-font">
                     Welcome to civilengineer.io
                  </div>
-
+                <div className="general-app-container content-container regularHeight bold-font">
+                    Delivering Free Open Source Applications to the internet, IOS, and Google Play Markets
+    
+                  </div>
+                {appdisplay}
 
 
             </div>

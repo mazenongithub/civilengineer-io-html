@@ -16,6 +16,13 @@
 .bold-font{
     font-weight:700;
 }
+.app-image-container{
+    margin:auto;
+}
+.app-image-container,
+.general-app-container{
+margin-top:15px;
+}
 .general-flex{
     display:flex;
     flex-direction: row
@@ -51,6 +58,9 @@
 .content-background{
     background-color:#56736B;
 }
+.app-image-container{
+text-align: center;
+}
 @media screen and (min-width:721px) {
     .general-container{
         display:grid;
@@ -63,6 +73,10 @@
 }
 
 @media screen and (min-width:1081px) {
+    .app-image-container{
+        width:447px;
+        height:361px;
+    }
     .content-background{
         height:90px;
     }

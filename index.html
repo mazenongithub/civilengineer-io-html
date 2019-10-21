@@ -45,12 +45,32 @@ myapps() {
   myapps.push(this.myapp("http:/geotechnical.civilengineer.io","svgIcon", "googlePlay","IOS", "Description"))
 return myapps;
 }
+createapp(myapp) {
+  return(
+    <div className="content-container regularHeight general-font general-app-container">
+      <div className="alignCenter">{myapp.url} </div>
+      <div className="app-image-container showborder"> {myapp.svgIcon} </div>
+
+      <div className="general-flex"> 
+          <div className="flex-one alignCenter">{myapp.googlePlay} </div>
+          <div className="flex-one alignCenter">{myapp.IOS} </div>
+      </div>
+      <div className="general-app-container"> {myapp.description} </div>
+
+    </div>
+
+
+
+  )
+}
 openmenularge() {
     const myapps = this.myapps();
     let appmenu = [];
+    let appdisplay = [];
     myapps.map(myapp => {
-        appmenu.push(<div className="navigation-subcontainer showborder general-font regularHeight alignCenter"> {myapp.url} </div>)
-    })
+        appmenu.push(<div className="general-app-container navigation-subcontainer showborder general-font regularHeight alignCenter"> {myapp.url} </div>)
+        appdisplay.push(this.createapp(myapp))
+      })
 
     return (
         <div className="general-container">
@@ -71,11 +91,11 @@ openmenularge() {
                   <div className="content-container showborder alignCenter titleSize content-background bold-font">
                     Welcome to civilengineer.io
                  </div>
-                 <div className="content-container regularHeight bold-font">
+                 <div className="general-app-container content-container regularHeight bold-font">
                   Delivering Free Open Source Applications to the internet, IOS, and Google Play Markets
 
                   </div>
-
+                {appdisplay}
 
 
             </div>
@@ -87,7 +107,7 @@ openmenularge() {
     if (this.state.menu === "open") {
         
       if(this.state.width>1080) {
-          return(<div>{this.openmenularge()}</div>)
+          return(this.openmenularge())
         } else if (this.state.width>720) {
           return(<div>menu  open medium</div>)
         } else {
