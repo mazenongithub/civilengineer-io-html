@@ -61,7 +61,14 @@ margin-top:15px;
 .app-image-container{
 text-align: center;
 }
+.navigation-container{
+    background-color: #BF9B9B;
+}
 @media screen and (min-width:721px) {
+    .large-container-1,
+    .large-container-2{
+        grid-column-end:span 3;
+    }
     .general-container{
         display:grid;
         grid-template-columns: 17% 17% 16% 16% 17% 17%;
@@ -70,6 +77,22 @@ text-align: center;
     .regularHeight{
         font-size: 24px;
     }
+    .titleSize{
+        font-size:36px
+    }
+    .navigation-container{
+        height:1560px;
+    }
+    .closeMenuIcon{
+        width:62px;
+        height:54px;
+        background-color: #BF9B9B;
+        }
+
+        .app-image-container{
+            width:361px;
+            height:361px;
+        }
 }
 
 @media screen and (min-width:1081px) {
@@ -80,18 +103,11 @@ text-align: center;
     .content-background{
         height:90px;
     }
-    .closeMenuIcon{
-    width:62px;
-    height:54px;
-    background-color: #BF9B9B;
-    }
+ 
     .titleSize{
         font-size: 48px;
     }
-    .navigation-container{
-        height:1560px;
-        background-color: #BF9B9B;
-    }
+   
     .large-container-1{
     grid-column-end: span 5;
     }
