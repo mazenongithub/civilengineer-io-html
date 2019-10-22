@@ -1,9 +1,12 @@
 .closeMenuIcon-1{fill:#ccc;stroke:#000;stroke-miterlimit:10;stroke-width:2px;}
 .openmenuicon-1{fill:#bf9b9b;}.openmenuicon-2{fill:#ff6138;stroke:#000;stroke-miterlimit:10;stroke-width:2px;}
-
+.downIcon-1{fill:#bf9b9b;}.downIcon-2{fill:#ff6138;stroke:#000;stroke-miterlimit:10;}
 .general-button{
     border:0px;
     padding:0px;
+}
+.small-down-icon{
+    width:56px;
 }
 .content-container{
     width:99%;

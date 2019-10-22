@@ -17,11 +17,10 @@
 class App extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { render: '', menu: 'closed', width: 0, height: 0 }
+        this.state = { render: '', menu: 'open', width: 0, height: 0 }
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
     componentDidMount() {
-        this.setState({ render: 'home' })
         window.addEventListener('resize', this.updateWindowDimensions);
         this.updateWindowDimensions();
     }
@@ -37,7 +36,10 @@ class App extends React.Component {
       return(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110.13 94"><defs><style></style></defs><title>menuIcon</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><rect className="openmenuicon-1" x="1" y="1" width="108.13" height="92" rx="12.49"/><path d="M96.63,2a11.51,11.51,0,0,1,11.5,11.49v67A11.51,11.51,0,0,1,96.63,92H13.49A11.5,11.5,0,0,1,2,80.51v-67A11.5,11.5,0,0,1,13.49,2H96.63m0-2H13.49A13.49,13.49,0,0,0,0,13.49v67A13.49,13.49,0,0,0,13.49,94H96.63a13.5,13.5,0,0,0,13.5-13.49v-67A13.5,13.5,0,0,0,96.63,0Z"/><rect className="openmenuicon-2" x="20.42" y="14.46" width="69.29" height="15.67" rx="3.38"/><rect className="openmenuicon-2" x="20.42" y="39.77" width="69.29" height="15.67" rx="3.38"/><rect className="openmenuicon-2" x="20.42" y="63.87" width="69.29" height="15.67" rx="3.38"/></g></g></svg>)
     }
     closeMenuIcon() {
-        return (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 56"><defs><style></style></defs><title>closeMenu</title><g id="Layer_2" data-name="Layer 2"><g id="PANEL"><rect className="closeMenuIcon-1" x="1" y="1" width="62" height="54" /><polygon points="45.44 38.61 42.61 41.44 32 30.83 21.39 41.44 18.57 38.61 29.17 28 18.57 17.39 21.39 14.56 32 25.17 42.61 14.56 45.44 17.39 34.83 28 45.44 38.61" /></g></g></svg>)
+        return (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 56"><defs><style></style></defs><title>closeMenu</title><g id="Layer_3" data-name="Layer 2"><g id="PANEL"><rect className="closeMenuIcon-1" x="1" y="1" width="62" height="54" /><polygon points="45.44 38.61 42.61 41.44 32 30.83 21.39 41.44 18.57 38.61 29.17 28 18.57 17.39 21.39 14.56 32 25.17 42.61 14.56 45.44 17.39 34.83 28 45.44 38.61" /></g></g></svg>)
+    }
+    downMenuIcon() {
+      return(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 47"><defs><style></style></defs><title>downicon</title><g id="Layer_4" data-name="Layer 2"><g id="Layer_1-3" data-name="Layer 1"><rect className="downIcon-1" x="1" y="1" width="54" height="45" rx="12.49"/><path d="M42.51,2A11.5,11.5,0,0,1,54,13.49v20A11.5,11.5,0,0,1,42.51,45h-29A11.5,11.5,0,0,1,2,33.51v-20A11.5,11.5,0,0,1,13.49,2h29m0-2h-29A13.49,13.49,0,0,0,0,13.49v20A13.49,13.49,0,0,0,13.49,47h29A13.49,13.49,0,0,0,56,33.51v-20A13.49,13.49,0,0,0,42.51,0Z"/><polygon className="downIcon-2" points="37.5 21.1 28 42 18.5 21.1 25.26 21.1 25.26 6 30.74 6 30.74 21.1 37.5 21.1"/></g></g></svg>)
     }
     myapp(url, svgIcon, googlePlay, IOS, description) {
         return ({ url, svgIcon, googlePlay, IOS, description })
@@ -64,6 +66,56 @@ class App extends React.Component {
 
         )
     }
+ 
+    handlesmallnavigation() {
+      const myapps = this.myapps();
+      let appmenu = [];
+      myapps.map(myapp => {
+            appmenu.push(<div className="general-app-container navigation-subcontainer showborder general-font regularHeight alignCenter"> {myapp.url} </div>)
+      })
+      if(this.state.menu === "open") {
+    
+     
+        return(<div className="general-flex navigation-container showborder">
+            <div className="flex-one">
+
+                <div className="general-flex">
+                    <div className="flex-five showborder titleSize bold-font alignCenter">
+                      Apps
+                    </div>
+                    <div className="flex-two showborder alignCenter">
+                      <button onClick={()=>{this.setState({menu:'closed'})}}
+                      className="closeMenuIcon general-button">{this.closeMenuIcon()}</button> 
+                    </div>
+                
+                </div>
+
+                {appmenu}
+            
+            
+            
+            </div>
+        </div>)
+      } else {
+        return;
+      }
+    }
+    handleopenmenu() {
+      if(this.state.menu === "closed") {
+        return( <button 
+                      onClick={()=>{this.setState({menu:'open'})}}
+                      className="general-button content-background small-down-icon"> {this.downMenuIcon()} </button>)
+      } else {
+        return;
+      }
+    }
+    handlesmallheaderalign() {
+      if(this.state.menu === "open") {
+        return `alignCenter`
+      } else {
+        return;
+      }
+    }
     openmenusmall() {
       const myapps = this.myapps();
         let appmenu = [];
@@ -77,30 +129,12 @@ class App extends React.Component {
             <div className="flex-one general-font">
 
                 <div className="general-flex">
-                    <div className="flex-one titleSize content-background alignCenter bold-font">
-                        Welcome to civilengineer.io
+                    <div className={`flex-one regularHeight ${this.handlesmallheaderalign()} content-background bold-font`}>
+                     {this.handleopenmenu()}  Welcome to civilengineer.io
                     </div>
                 </div>
 
-        <div className="general-flex navigation-container showborder">
-            <div className="flex-one">
-
-                <div className="general-flex">
-                    <div className="flex-five showborder titleSize bold-font alignCenter">
-                      Apps
-                    </div>
-                    <div className="flex-two showborder alignCenter">
-                      <button className="closeMenuIcon general-button">{this.closeMenuIcon()}</button> 
-                    </div>
-                
-                </div>
-
-                {appmenu}
-            
-            
-            
-            </div>
-        </div>
+        {this.handlesmallnavigation()}
 
         <div className="general-app-container regularHeight">
           Delivering Free Open Source Applications to the internet, IOS, and Google Play Markets
