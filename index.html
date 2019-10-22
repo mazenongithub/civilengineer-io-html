@@ -7,9 +7,11 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans&display=swap" rel="stylesheet">
   <title>http://civilengineer.io</title>
   <meta name="description"
-    content="civilengineer.io is a collection of apps hosted on the web, Google Play, and IOS markets. ">
-  <meta name="keywords" content="civilengineer, civil engineer, civilengineer.io">
-  <meta name="author" content="John Doe">
+    content="A collection of project management, construction management, and civil design programs delivered to the web, Google Play, and IOS markets.">
+  <meta name="keywords"
+    content="Mazen Khenaisser, mazen@civilengineer.io, civilengineer, civil engineer, civilengineer.io">
+  <meta name="author" content="Mazen Khenaisser">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
@@ -34,6 +36,7 @@ class App extends React.Component {
     }
 
     updateWindowDimensions() {
+     
         this.setState({ width: window.innerWidth, height: window.innerHeight });
 
     }
@@ -51,8 +54,8 @@ class App extends React.Component {
     }
     myapps() {
         let myapps = [];
-        myapps.push(this.myapp("http://pm.civilengineer.io", "svgIcon", "googlePlay", "IOS", "Description"))
-        myapps.push(this.myapp("http://geotechnical.civilengineer.io", "svgIcon", "googlePlay", "IOS", "Description"))
+        myapps.push(this.myapp("http://pm.civilengineer.io", "svgIcon", "googlePlay", "IOS", "Project Management. Act as the PM when you create a Project. Create Milestones. Build a Team. Define Roles. Receive Services. After the Service Provider has been added, they can enter their schedule of labor and materials to accomplish the work for approval. Then they are to execute according to the schedule and record their actual costs. Easy Payments routing payment to service provider. Google Pay, Apple Pay, Stripe, Paypal. "))
+        myapps.push(this.myapp("http://geotechnical.civilengineer.io", "svgIcon", "googlePlay", "IOS", "Geotechnical project administration for Home Owners and Builders. Delivers Geotechnical Reports from the Engineer to the Client. Construction inspection scheduling. Project Management. Plan Reviews. Design. "))
         return myapps;
     }
     createapp(myapp) {
@@ -124,7 +127,7 @@ class App extends React.Component {
 
     homepage() {
     const myapps = this.myapps();
-    const mainSummary = 'The Source for All Things Apps. Delivering apps to the web, Google Play, and IOS markets. '
+    const mainSummary = 'A collection of project management, construction management, and civil design programs delivered to the web, Google Play, and IOS markets.'
     let homepage = [];
     let appdisplay = [];
     myapps.map(myapp => {

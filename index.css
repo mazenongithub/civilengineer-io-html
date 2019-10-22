@@ -121,7 +121,7 @@ text-align: center;
         font-size:36px
     }
     .navigation-container{
-        height:1560px;
+        min-height:1800px;
     }
 
         .app-image-container{
