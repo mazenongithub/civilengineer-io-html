@@ -5,6 +5,10 @@
     border:0px;
     padding:0px;
 }
+.externalLink-home{
+    text-decoration: none;
+    color:#000;
+}
 .small-down-icon{
     width:56px;
 }

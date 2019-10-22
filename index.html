@@ -5,10 +5,15 @@
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="index.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans&display=swap" rel="stylesheet">
-  <title>civilengineer.io</title>
+  <title>http://civilengineer.io</title>
+  <meta name="description"
+    content="civilengineer.io is a collection of apps hosted on the web, Google Play, and IOS markets. ">
+  <meta name="keywords" content="civilengineer, civil engineer, civilengineer.io">
+  <meta name="author" content="John Doe">
   <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+  <link rel="icon" href="2x/io.png">
 </head>
 
 <body>
@@ -47,13 +52,13 @@ class App extends React.Component {
     myapps() {
         let myapps = [];
         myapps.push(this.myapp("http://pm.civilengineer.io", "svgIcon", "googlePlay", "IOS", "Description"))
-        myapps.push(this.myapp("http:/geotechnical.civilengineer.io", "svgIcon", "googlePlay", "IOS", "Description"))
+        myapps.push(this.myapp("http://geotechnical.civilengineer.io", "svgIcon", "googlePlay", "IOS", "Description"))
         return myapps;
     }
     createapp(myapp) {
         return (
             <div className="content-container regularHeight general-font general-app-container">
-                <div className="alignCenter">{myapp.url} </div>
+                <div className="alignCenter"><a href={myapp.url} className="externalLink-home" target="_blank">{myapp.url} </a> </div>
                 <div className="app-image-container showborder"> {myapp.svgIcon} </div>
 
                 <div className="general-flex">
@@ -119,6 +124,7 @@ class App extends React.Component {
 
     homepage() {
     const myapps = this.myapps();
+    const mainSummary = 'The Source for All Things Apps. Delivering apps to the web, Google Play, and IOS markets. '
     let homepage = [];
     let appdisplay = [];
     myapps.map(myapp => {
@@ -128,7 +134,7 @@ class App extends React.Component {
     if (this.state.width > 720) {
         if (this.state.menu === 'open') {
             homepage.push(<div className="general-app-container content-container regularHeight bold-font">
-                Delivering Free Open Source Applications to the internet, IOS, and Google Play Markets
+                 {mainSummary}
                   </div>)
 
             homepage.push(this.appdisplay())
@@ -137,7 +143,7 @@ class App extends React.Component {
         } else if (this.state.menu === 'closed') {
 
             homepage.push(<div className="general-app-container span-all regularHeight bold-font">
-                Delivering Free Open Source Applications to the internet, IOS, and Google Play Markets
+                {mainSummary}
       </div>)
             homepage.push(<div className="general-app-container span-all">{this.appdisplay()}</div>)
 
@@ -149,7 +155,7 @@ class App extends React.Component {
             <div className="general-flex">
                 <div className="flex-one general-font">
                     <div className="general-app-container regularHeight">
-                        Delivering Free Open Source Applications to the internet, IOS, and Google Play Markets
+                       {mainSummary}
           </div>
 
                     {appdisplay}
