@@ -17,7 +17,7 @@
 class App extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { render: '', menu: 'open', width: 0, height: 0 }
+        this.state = { render: '', menu: 'closed', width: 0, height: 0 }
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
     componentDidMount() {
@@ -32,6 +32,9 @@ class App extends React.Component {
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
 
+    }
+    openMenuIcon() {
+      return(<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110.13 94"><defs><style></style></defs><title>menuIcon</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><rect className="openmenuicon-1" x="1" y="1" width="108.13" height="92" rx="12.49"/><path d="M96.63,2a11.51,11.51,0,0,1,11.5,11.49v67A11.51,11.51,0,0,1,96.63,92H13.49A11.5,11.5,0,0,1,2,80.51v-67A11.5,11.5,0,0,1,13.49,2H96.63m0-2H13.49A13.49,13.49,0,0,0,0,13.49v67A13.49,13.49,0,0,0,13.49,94H96.63a13.5,13.5,0,0,0,13.5-13.49v-67A13.5,13.5,0,0,0,96.63,0Z"/><rect className="openmenuicon-2" x="20.42" y="14.46" width="69.29" height="15.67" rx="3.38"/><rect className="openmenuicon-2" x="20.42" y="39.77" width="69.29" height="15.67" rx="3.38"/><rect className="openmenuicon-2" x="20.42" y="63.87" width="69.29" height="15.67" rx="3.38"/></g></g></svg>)
     }
     closeMenuIcon() {
         return (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 56"><defs><style></style></defs><title>closeMenu</title><g id="Layer_2" data-name="Layer 2"><g id="PANEL"><rect className="closeMenuIcon-1" x="1" y="1" width="62" height="54" /><polygon points="45.44 38.61 42.61 41.44 32 30.83 21.39 41.44 18.57 38.61 29.17 28 18.57 17.39 21.39 14.56 32 25.17 42.61 14.56 45.44 17.39 34.83 28 45.44 38.61" /></g></g></svg>)
@@ -114,6 +117,33 @@ class App extends React.Component {
     )
   
   }
+  closedmenularge() {
+    return(
+    <div className="general-container general-font">
+        <div className="closedheader-1 titleSize content-background showborder">
+          <button onClick={()=>{this.setState({menu:'open'})}}
+          className="general-button content-background open-menu-icon"> {this.openMenuIcon()} </button>
+        </div>
+        <div className="closedheader-2 titleSize content-background alignCenter showborder bold-font">
+          Welcome to civilengineer.io
+        </div>
+        <div className="general-app-container span-all regularHeight bold-font">
+                        Delivering Free Open Source Applications to the internet, IOS, and Google Play Markets
+        </div>
+        <div className="span-all titleSize">
+          {this.appdisplay()}
+        </div>
+    </div>
+    )
+  }
+  appdisplay() {
+    let appdisplay = [];
+    const myapps = this.myapps();
+        myapps.map(myapp => {
+            appdisplay.push(this.createapp(myapp))
+        })
+        return appdisplay;
+  }
     openmenularge() {
         const myapps = this.myapps();
         let appmenu = [];
@@ -128,7 +158,8 @@ class App extends React.Component {
                 <div className="large-container-1 showborder navigation-container">
                     <div className="general-flex">
                         <div className="flex-four showborder alignCenter general-font titleSize bold-font">Apps </div>
-                        <div className="flex-one showborder alignRight"><button className="closeMenuIcon general-button">{this.closeMenuIcon()}</button> </div>
+                        <div className="flex-one showborder alignRight"><button onClick={()=>{this.setState({menu:'closed'})}}
+                          className="closeMenuIcon general-button">{this.closeMenuIcon()}</button> </div>
                     </div>
                     {appmenu}
                 </div>
@@ -141,36 +172,30 @@ class App extends React.Component {
                     <div className="general-app-container content-container regularHeight bold-font">
                         Delivering Free Open Source Applications to the internet, IOS, and Google Play Markets
                     </div>
-                    {appdisplay}
+                    {this.appdisplay()}
                 </div>
             </div>
 
         )
     }
-    showcontent() {
-        if (this.state.menu === "open") {
 
-            if (this.state.width > 720) {
-                return (this.openmenularge())
-            } else {
-                return (this.openmenusmall())
-            }
+showcontent() {
+       
+if (this.state.width > 720) {
 
+if (this.state.menu === "open") {
+    return (this.openmenularge())
+} else if(this.state.menu === "closed") {
+    return (this.closedmenularge())
+}
 
-        } else if (this.state.menu === "closed") {
+} else {
 
+return (this.openmenusmall())
+}
 
-            if (this.state.width > 1080) {
-                return (<div>menu large</div>)
-            } else if (this.state.width > 720) {
-                return (<div>menu medium</div>)
-            } else {
-                return (<div>menu small</div>)
-            }
-
-        }
-
-    }
+       
+}
 
     render() {
         console.log(this.state.width, this.state.height)

@@ -1,4 +1,6 @@
 .closeMenuIcon-1{fill:#ccc;stroke:#000;stroke-miterlimit:10;stroke-width:2px;}
+.openmenuicon-1{fill:#bf9b9b;}.openmenuicon-2{fill:#ff6138;stroke:#000;stroke-miterlimit:10;stroke-width:2px;}
+
 .general-button{
     border:0px;
     padding:0px;
@@ -72,6 +74,7 @@ text-align: center;
 }
  .content-background{
     min-height:60px;
+    padding:5px;
 }
 .titleSize{
     font-size:24px;
@@ -91,6 +94,9 @@ text-align: center;
     }
 
 @media screen and (min-width:721px) {
+    .span-all{
+        grid-column-end:span 6;
+    }
     .large-container-1,
     .large-container-2{
         grid-column-end:span 3;
@@ -117,21 +123,42 @@ text-align: center;
         .content-background{
             height:70px;
         }
+        .closedheader-2{
+            grid-column-end: span 5;
+        }
+
+        .open-menu-icon{
+            width:100%;
+            max-width:95px;
+        }
+
+     
 }
 
 @media screen and (min-width:1081px) {
+    .open-menu-icon{
+        max-width:110px;
+    }
     .app-image-container{
         width:447px;
         height:361px;
     }
     .content-background{
-        height:90px;
+        height:115px;
     }
  
     .titleSize{
         font-size: 48px;
     }
-   
+    .closedheader-1{
+        grid-column-end: span 2;
+    }
+    .closedheader-2{
+        grid-column-end: span 10;
+    }
+   .span-all{
+       grid-column-end: span 12;;
+   }
     .large-container-1{
     grid-column-end: span 5;
     }
@@ -144,4 +171,5 @@ text-align: center;
     .regularHeight{
         font-size: 30px;
     }
+   
 }

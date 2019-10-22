@@ -1,27 +1,18 @@
 function openmenusmall() {
-    return (
-        <div className="general-flex">
-            <div className="flex-one general-font">
 
-                <div className="general-flex">
-                    <div className="flex-one titleSize content-background alignCenter bold-font">
-                        Welcome to civilengineer.io
-                    </div>
-                </div>
+    if (this.state.width > 720) {
 
-                <div className="general-flex navigation-container">
-                    <div className="flex-five">
+        if (this.state.menu === "open") {
+            return (this.openmenularge())
+        } else {
+            return (this.closedmenularge())
+        }
 
-                    </div>
-                    <div className="flex-two">
-                    </div>
+    } else {
 
-                </div>
+        return (this.openmenusmall())
+    }
 
-            </div>
 
-        </div>
-
-    )
 
 }
