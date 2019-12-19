@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="index.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans|Ubuntu:400,500&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans|Ubuntu:400,500|Nunito+Sans:400,600&display=swap"
     rel="stylesheet">
   <title>http://civilengineer.io</title>
   <meta name="description"
@@ -61,6 +62,7 @@
       componentDidMount() {
         window.addEventListener('resize', this.updateWindowDimensions);
         this.updateWindowDimensions();
+
       }
       componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
@@ -129,13 +131,13 @@
           <div className="content-container regularHeight general-font general-app-container">
             <div className="alignCenter">{myapp.title}</div>
             <div className="alignCenter"><a href={myapp.url} className="externalLink-home" target="_blank">{myapp.url} </a> </div>
-            <div className="app-image-container showborder"> {svgIcon} </div>
+            <div className="app-image-container showborder addBorderRadius addTopMargin"> {svgIcon}</div>
 
             <div className="general-flex">
               {googleplay}
               {ios}
             </div>
-            <div className="general-app-container"> {myapp.description} </div>
+            <div className="general-app-container addBottomMargin"> {myapp.description} </div>
 
           </div>
 
@@ -213,7 +215,7 @@
 
           } else if (this.state.menu === 'closed') {
 
-            homepage.push(<div className="general-app-container span-all regularHeight bold-font">
+            homepage.push(<div className="general-app-container content-container span-all regularHeight bold-font">
               {mainSummary}
             </div>)
             homepage.push(<div className="general-app-container span-all">{this.appdisplay()}</div>)
@@ -296,10 +298,14 @@
           appmenu.push(<div className="general-app-container navigation-subcontainer showborder general-font regularHeight alignCenter"> {myapp.url} </div>)
           appdisplay.push(this.createapp(myapp))
         })
-
+        const styles = {
+          navigationheight: {
+            height: window.height
+          }
+        }
         return (
           <div className="general-container">
-            <div className="large-container-1 showborder navigation-container">
+            <div className="large-container-1 showborder navigation-container" style={styles.navigationheight}>
               <div className="general-flex">
                 <div className="flex-four alignCenter general-font titleSize bold-font">Apps </div>
                 <div className="flex-one alignRight"><button onClick={() => { this.setState({ menu: 'closed' }) }}
@@ -310,7 +316,7 @@
 
 
             <div className="large-container-2 showborder general-font">
-              <div className="content-container showborder alignCenter titleSize content-background bold-font">
+              <div className="showborder alignCenter titleSize content-background bold-font">
                 Welcome to civilengineer.io
                     </div>
               {this.contentdynamic()}
